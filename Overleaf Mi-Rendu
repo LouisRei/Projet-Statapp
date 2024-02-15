@@ -104,6 +104,36 @@ Octobre 2023- Mai 2024}
 
 \section*{\textbf{1. Travail effectué et résultats préliminaires}}
 
+Courant Octobre 2023, à la suite de la présentation des projets, nous envoyions un premier mail à M. Gary-Bobo afin de participer au projet de statistique appliquée : " La crise des hôpitaux français mise en équations : transition vers l'ambulatoire et indicateurs financiers". Ce projet qui combine étude financière et l'hôpital publique nous a attiré de par le contexte actuelle de la crise des hôpitaux et nos aspirations aux études financières quantitatives.
+
+\vspace{0.8cm}
+
+Ce projet de statistique appliquée a pour but de se poser des questions sur les différences entre l'hôpital privé et l'hôpital publique. Ainsi nous allons étudier les causes et les conséquences de ces différences. Nous allons tout d'abord briévement étudier ces divergences qui seraient principalements dues à l'ambulatoire utilisé par l'hôpital privé pour voir les résultats financiers. Nous allons étudier si l'ambulatoire pratiqué par l'hôpital privé est due à de meilleurs investissement en capitaux ou bien s'il y a d'autres arguments qui font que le publique ne pratique pas autant l'ambulatoire. Cette étude pourrait donc permettre de lancer une nouvelle stratégie d'investissement dans l'hôpital publique pour lui permettre de développer une meilleure efficacité et de meilleurs résultats dans le cadre de la crise que fait face à l'hôpital (mise en évidence notamment par la crise du covid). Il va donc être nécessaire pour répondre à ces questions de différence de moyens et d'efficacité entre l'hôpital privé et publique d'utiliser nos compétences acquises en statistique et en économétrie.
+
+\vspace{0.8cm}
+
+Nous avons décidé de travailler lors de ce projet sur GitHub avec des travaux sur R d'une part ainsi que sur Python d'autre part afin d'utiliser au mieux les avantages des deux languages.
+
+\vspace{0.8cm}
+
+Nous avons donc commencé le projet en Novembre par prendre en mains les différentes bases de données vers lesquelles notre encadrant M. Gary-Bobo nous a dirigé. Nous avons débuté nos travaux sur les bases de données provenant de HospiDiag, outil d’aide à la décision permettant de mesurer la performance d’un établissement de santé qui pratique de la médecine, de la chirurgie ou de l’obstétrique, en comparaison avec d’autres établissements de santé. Ce site regroupe des données sur différentes variables physiques (nombres de lits, nombres d'opérations de tel ou tel type, l'ambulatoire, la durée d'un séjour) ainsi que des variables financières (EBITDA, taux d'endettements, le taux de capacité d'auto-financement, les aides de l'états, MIG, MERRI ect.) sur tous les différents établissements de santé en France, qui sont réparties en différentes catégories : Clinique (privée), Centre Hospitalier, Centre Hospitalier régional, centre de lutte contre le cancer et les établissements à buts non lucratifs (publique).
+
+\vspace{0.8cm}
+
+Nous avons décidé de travailler sur les données de 2017 à 2022 en enlevant les données de 2020 (année covid), étant donné que les données sont trop différentes. Pour ce qui est des années 2021 et 2022 nous les avons gardées mais il y a beaucoup de données manquantes, sûrement parce que certains hôpitaux n'ont pas encore remontée les données.
+
+\vspace{0.8cm}
+
+
+Pour la question du choix des variables, notre étude va se consacré sur l'étude des variables financières, on regarde celle intéréssantes,  (qui ont assez de données, intéressante à étudier), 
+certaines variables financières ne peuvent pas être calculées pour les établissements privés à but lucratif. Il s’agit de:  par exemple: 
+P4 Coût du personnel non médical des services cliniques rapporté aux recettes 
+P5 Coût du personnel médical des services cliniques rapporté aux recettes 
+P6 Coût du personnel relatif aux services médico-techniques rapporté aux recettes 
+
+Au final on s'intéressera à 49 variables, pour le moment notre étude va se focaliser sur la marge brut, l'EBIDTA, le taux d'exploitation, les recettes d'exploitations, les encours de la dette, les aides aux hopitaux types MERRI, MIG, les besoins en fonds de roulements.
+
+
 \section*{\textbf{2. Difficultés et pistes de résolution}}
 
 \section*{\textbf{3. Perspectives futures}}
