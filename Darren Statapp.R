@@ -1,7 +1,11 @@
 install.packages("dplyr")
 install.packages("readxl")
+install.packages("summarytools")
+
 library(readxl)
 library(dplyr)
+library(summarytools)
+
 data2017 <- read_xlsx("C:\\Users\\Tonin Darren\\Downloads\\Statapp\\hospidiag_opendata\\hospidiag_opendata_2017.xlsx", sheet = "hd2017") 
 data2017<- mutate(data2017,année=2017) 
 data2018 <- read_xlsx("C:\\Users\\Tonin Darren\\Downloads\\Statapp\\hospidiag_opendata\\hospidiag_opendata_2018.xlsx", sheet = "hd2018") 
@@ -49,6 +53,75 @@ data_Fi <- mutate(data_Fi, CAF  = coalesce(F2_D, F2_O)
                   ,  Encours_dette = coalesce(F6_D, F6_O)
                   ,  Vetuste_equip =  coalesce(F8_D, F8_O)
                   ,  renouvellement_equip = coalesce(F9_D, F9_O))
-# Statistiques descriptives
 
-summary(data_Fi)
+
+# Etude des variables EBITDA et taux de Marge
+
+# La variable EBITDAO(bénéfice avant intérêts, impôts, dépréciation et amortissement) mesure la "marge" que l'établissement privé dégage sur son exploitation "courante" pour financer ses charges financières, d'amortissement
+# et de provisions, c'est-à-dire pour financer ses investissements. Elle se calcule donc comme suit:
+# (EBITDA / CA) x 100 où EBITDA= Résultat net comptable + Charges financières + Impôts et taxes + Dotations aux amortissements et provisions
+# ou encore EBITDA = Chiffre d’affaires annuel hors taxes — Achats et charges externes — Charges de personnel — Autres charges
+
+# La variable 
+data1 <- data_Fi[, c("finess", "rs", "EBITDAO")]
+data2 <- data_Fi[, c("finess", "rs", "marge_bruteD")]
+
+# On enlève les valeurs manquantes
+
+data1 <- data1[!is.na(data1$EBITDAO), ]
+data2 <- data2[!is.na(data2$marge_bruteD), ]
+
+# Convertir en variales numériques
+data1 <- data1 %>% 
+  mutate(EBITDAO = as.numeric(EBITDAO))
+data2 <- data2 %>% 
+  mutate(marge_bruteD = as.numeric(marge_bruteD))
+
+# On retire les valeurs aberrantes selon le principe de l'écart-type
+
+# Calculer la moyenne et l'écart-type
+moyenne1 <- mean(data1$EBITDAO)
+ecart_type1 <- sd(data1$EBITDAO)
+
+moyenne2 <- mean(data2$marge_bruteD)
+ecart_type2 <- sd(data2$marge_bruteD)
+
+# Définir les seuils
+seuil_inf1 <- moyenne1 - 100000 * ecart_type1
+seuil_sup1 <- moyenne1 + 100000 * ecart_type1
+
+seuil_inf2 <- moyenne2 - 100000 * ecart_type2
+seuil_sup2 <- moyenne2 + 100000 * ecart_type2
+
+# Filtrer les valeurs aberrantes
+data1 <- subset(data1, EBITDAO >= seuil_inf1 & EBITDAO <= seuil_sup1)
+
+data2 <- subset(data2, marge_bruteD >= seuil_inf2 & marge_bruteD <= seuil_sup2)
+
+
+# Résumé statistique
+summary(data1)
+descr(data1$EBITDAO)
+
+summary(data2)
+descr(data2$marge_bruteD)
+
+# Histogrammes
+hist(data1$EBITDAO)
+
+hist(data2$marge_bruteD)
+
+
+# Boîte à moustaches
+boxplot(data1$EBITDAO)
+
+boxplot(data2$marge_bruteD)
+
+
+# Nuage de points (si une autre variable est présente)
+plot(data$variable, data$autre_variable)
+plot(data$variable, data$autre_variable)
+
+
+
+
