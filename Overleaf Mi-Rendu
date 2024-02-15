@@ -1,0 +1,113 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\author{Thomas Roussaux \\
+    Auguste Vautrin \\
+    Ireni Tonin \\
+    Louis Reisse
+}
+
+
+\title{\fbox{\parbox{0.8\textwidth}{\centering\textbf{Note d'étape - Sujet 25 \\ La crise des hôpitaux français mise en équations}}}}
+\author{Louis Reisse, Auguste Vautrin, Thomas Roussaux, Ireni Tonin }
+\date{15 Février 2024}
+
+\author{\textbf{Thomas Roussaux} \\
+    \textbf{Auguste Vautrin} \\
+    \textbf{Ireni Tonin} \\
+    \textbf{Louis Reisse}
+}
+
+
+
+
+
+
+
+
+\begin{document}
+
+\maketitle
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[t]{0.35\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Image/ensae.png} % Ajout de \fbox pour encadrer l'image
+
+    \label{fig:image1}
+  \end{minipage}\hspace{1cm}%
+  \begin{minipage}[t]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Image/télécharger.png} % Ajout de \fbox pour encadrer l'image
+
+    \label{fig:image2}
+  \end{minipage}
+\end{figure}
+
+\vfill
+
+
+\vfill
+
+
+\vfill
+
+
+\vfill
+
+
+\vfill
+
+
+\vfill
+
+
+\vfill
+
+
+
+\noindent\begin{minipage}[t]{0.5\textwidth}
+\textbf{Statistique Appliquée}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.5\textwidth}
+\raggedleft
+\textbf{Encadrant : Gary-Bobo \\
+Octobre 2023- Mai 2024}
+\end{minipage}
+
+
+
+\vfill
+
+
+\vfill
+
+
+\vfill
+
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\ 
+\\ 
+\\
+\\ 
+\\
+
+\newpage
+
+\section*{\textbf{1. Travail effectué et résultats préliminaires}}
+
+\section*{\textbf{2. Difficultés et pistes de résolution}}
+
+\section*{\textbf{3. Perspectives futures}}
+
+\end{document}
+
+
