@@ -230,11 +230,15 @@ Néanmoins, malgré cette asymétrie, la majorité des observations se situent d
 resserrée, démontrant une cohérence dans les performances opérationnelles des 
 entreprises incluses dans l'échantillon. En outre, la présence de quelques 
 valeurs aberrantes, notamment une valeur maximale de 100, soulève des questions 
-quant à leur impact potentiel sur l'analyse globale des données.
+quant à leur impact potentiel sur l'analyse globale des données. 
+
+Variable CI-F7_D (Part des recettes d'exploitations pour les missions d'enseignement, de recherche, de
+référence et d'innovation):
+En effectuant la regression de cette variable sur le nombre de lits de médecine de l'établissement, on a une correlation positive et significative(la p valeur est de l'ordre de 10^-4). Cependant, la corrélation semble faible (Adjusted R-squared:  0.04234). Lorsque l'on trace le graphique, on voit clairement qu'il faut distinguer par type d'établissement. 
 
 
 \section*{\textbf{2. Difficultés et pistes de résolution}}
-
+La plus grande difficulté rencontrée est la compréhension du vocabulaire de finance d'entreprise. En effet, il y a beaucoup de vocabulaire nouveau utilisé dans la description des variables, ce qui a rendu difficile la compréhension des variables et le choix des variables intéressantes. Le cours de comptabilité de l'ENSAE nous sera surement très utile pour avancer dans le projet.
 Pour plusieurs variables, comme le Taux de CAF par exemple, il n’est pas possible de le calculer de la même manière pour un établissement privé et pour un établissement public. La manière dont est construite la base de données nous pousse à avoir envie de comparer ces variables pour ces deux types d’établissements. Une difficulté sera de réussir à comparer ces variables tout en tenant compte du fait que leurs définitions ne sont pas les mêmes. 
 
 Une autre difficulté sera le nombre de non-réponse des établissements, en particulier pour les établissements privés où le taux de non-réponse est supérieur à 80\% sur la majorité des variables financières, ce qui va poser des problèmes sur la précision de nos résultats et qui peut créer des biais de sélection si la non-réponse est corrélée à d’autres variables.
