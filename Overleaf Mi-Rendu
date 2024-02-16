@@ -72,7 +72,7 @@
 \hfill
 \begin{minipage}[t]{0.5\textwidth}
 \raggedleft
-\textbf{Encadrant : Gary-Bobo \\
+\textbf{Encadrant : Robert Gary-Bobo \\
 Octobre 2023- Mai 2024}
 \end{minipage}
 
@@ -186,6 +186,12 @@ quant à leur impact potentiel sur l'analyse globale des données.
 
 \section*{\textbf{2. Difficultés et pistes de résolution}}
 
+Pour plusieurs variables, comme le Taux de CAF par exemple, il n’est pas possible de le calculer de la même manière pour un établissement privé et pour un établissement public. La manière dont est construite la base de données nous pousse à avoir envie de comparer ces variables pour ces deux types d’établissements. Une difficulté sera de réussir à comparer ces variables tout en tenant compte du fait que leurs définitions ne sont pas les mêmes. 
+
+Une autre difficulté sera le nombre de non-réponse des établissements, en particulier pour les établissements privés où le taux de non-réponse est supérieur à 80\% sur la majorité des variables financières, ce qui va poser des problèmes sur la précision de nos résultats et qui peut créer des biais de sélection si la non-réponse est corrélée à d’autres variables.
+
 \section*{\textbf{3. Perspectives futures}}
 
+Le but est de mettre en relation les résultats financiers des établissements et les performances des hôpitaux et de comparer les hôpitaux publics et privés.
+Une autre source de données qui peut être intéressante est la base sur le site SAE Diffusion des statistiques annuelles des établissements de santé, même si après une première recherche il n’apparait pas de variable financière, d’autres variables pourraient être utilisées lors des prochaines étapes. De plus cette base sera facilement mise en relation avec la base hospidiag en utilisant le numéro FINESS de chaque établissement comme clef primaire.\textbf{}
 \end{document}
