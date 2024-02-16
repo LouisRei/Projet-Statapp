@@ -125,13 +125,63 @@ Nous avons décidé de travailler sur les données de 2017 à 2022 en enlevant l
 \vspace{0.8cm}
 
 
-Pour la question du choix des variables, notre étude va se consacré sur l'étude des variables financières, on regarde celle intéréssantes,  (qui ont assez de données, intéressante à étudier), 
-certaines variables financières ne peuvent pas être calculées pour les établissements privés à but lucratif. Il s’agit de:  par exemple: 
+Pour la question du choix des variables, notre étude va se consacré sur l'étude des variables financières, on regarde celle intéréssantes au sens qu'elles aient assez de données, qu'elles soient petinentes à notre étudie privée/publique en terme d'efficacité. 
+On remarque que certaines variables financières ne peuvent pas être calculées pour les établissements privés à but lucratif. Il s’agit par exemple de:
 P4 Coût du personnel non médical des services cliniques rapporté aux recettes 
 P5 Coût du personnel médical des services cliniques rapporté aux recettes 
 P6 Coût du personnel relatif aux services médico-techniques rapporté aux recettes 
 
-Au final on s'intéressera à 49 variables, pour le moment notre étude va se focaliser sur la marge brut, l'EBIDTA, le taux d'exploitation, les recettes d'exploitations, les encours de la dette, les aides aux hopitaux types MERRI, MIG, les besoins en fonds de roulements.
+Au final on s'intéressera à 49 variables, pour le moment notre étude va se focaliser sur la marge brut, l'EBIDTA, le taux d'exploitation, les recettes d'exploitations, les encours de la dette, les aides aux hôpitaux types MERRI, MIG, les besoins en fonds de roulements.
+
+\vspace{0.8cm}
+
+On s'est d'abord intéresser à l'étude de deux variables indicatrices de la santé financière 
+des hopitaux et qui sont présentes dans la base hospidiag. Il s'agit des variables: 
+F1D qui mesure le taux de marge brute pour les hopitaux publique
+et F1O qui elle evalue le taux EBITDA pour le privé.
+Le taux de marge brute correspond à la  "marge" que l'établissement 
+dégage sur son exploitation "courante" pour financer ses charges 
+financières et les conséquences financières de ses investissements.
+Quant au taux EBITDA (bénéfice avant intérêts, impôts, dépréciation et amortissement) il mesure la "marge" que l'établissement privé dégage sur son exploitation "courante" pour financer ses charges financières, d'amortissement et de provisions, c'est-à-dire pour financer ses investissements. Elle se calcule donc comme suit:
+
+(EBITDA / CA) x 100 où EBITDA= Résultat net comptable + Charges financières + Impôts et taxes + Dotations aux amortissements et provisions
+
+ou encore EBITDA = Chiffre d’affaires annuel hors taxes — Achats et charges externes — Charges de personnel — Autres charges
+
+Un taux faible ou négatif rend donc compte de l'incapacité de l'établissement à couvrir ses investissements futurs et leur financement par le cycle d'exploitation.
+
+  Ces indicateurs bien que similaire diffèrent de par la manière dont elles se calculent
+on les étudie donc séparemment. Ce choix des etablissements a été effectué en 
+omettant ceux pour lesquels la valeur de la variable est NA et ceux ayant des valeurs abérrantes (notons que ces valeurs abérrantes ont été exclues
+en utilisant les seuils (-100 et 100). De cette étude on  retient:
+
+  Variable F1D (taux de marge brute pour les etablissements publique): On recense pour
+cette variable 252 observations. L'analyse approfondie des données financières révèle 
+des détails essentiels sur la marge brute des entreprises examinées. La variable 
+"margebruteD" joue un rôle crucial dans l'évaluation de la performance 
+financière opérationnelle de ces entités. Avec une moyenne de 5.00 et une
+médiane de 5.00, cette mesure indique une stabilité relative dans les 
+résultats financiers, malgré une distribution des données présentant une 
+certaine dispersion, avec des valeurs s'étendant de -11 à 15. Une 
+investigation plus approfondie met en lumière une légère asymétrie négative 
+dans la distribution, suggérant une distribution décalée à droite de la médiane. 
+Cependant, la majorité des observations se situent dans une fourchette relativement 
+étroite, ce qui témoigne d'une cohérence dans les performances opérationnelles des entreprises incluses 
+dans l'échantillon. 
+
+Variable F1O (taux EBITDA): 
+  On recense ici 59 établissements privés. L'exploration des données financières du 
+présent échantillon offre une perspective éclairante sur la santé financière des 
+entreprises incluses dans l'étude. Avec une moyenne 
+de 6.07 et une médiane de 5, cette mesure témoigne d'une certaine stabilité 
+dans les résultats financiers, bien que l'amplitude des données soit notable, 
+allant de -51 à 100. Une analyse plus poussée révèle une asymétrie positive 
+marquée dans la distribution, suggérant une  distribution décalée à gauche de la médiane. 
+Néanmoins, malgré cette asymétrie, la majorité des observations se situent dans une fourchette relativement 
+resserrée, démontrant une cohérence dans les performances opérationnelles des 
+entreprises incluses dans l'échantillon. En outre, la présence de quelques 
+valeurs aberrantes, notamment une valeur maximale de 100, soulève des questions 
+quant à leur impact potentiel sur l'analyse globale des données.
 
 
 \section*{\textbf{2. Difficultés et pistes de résolution}}
@@ -139,5 +189,3 @@ Au final on s'intéressera à 49 variables, pour le moment notre étude va se fo
 \section*{\textbf{3. Perspectives futures}}
 
 \end{document}
-
-
