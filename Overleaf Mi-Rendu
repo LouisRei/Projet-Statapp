@@ -104,34 +104,83 @@ Octobre 2023- Mai 2024}
 
 \section*{\textbf{1. Travail effectué et résultats préliminaires}}
 
-Courant Octobre 2023, à la suite de la présentation des projets, nous envoyions un premier mail à M. Gary-Bobo afin de participer au projet de statistique appliquée : " La crise des hôpitaux français mise en équations : transition vers l'ambulatoire et indicateurs financiers". Ce projet qui combine étude financière et l'hôpital publique nous a attiré de par le contexte actuelle de la crise des hôpitaux et nos aspirations aux études financières quantitatives.
+Courant Octobre 2023, à la suite de la présentation des projets, nous avons en-
+voyé un premier mail à M. Gary-Bobo afin de participer au projet de statistique
+appliquée intitulé : ”La crise des hôpitaux français mise en équations : transi-
+tion vers l’ambulatoire et indicateurs financiers”. Ce projet nous a attiré car il
+aborde une thématique importante, à savoir la crise des hôpitaux, tout en
+offrant une perspective intéressante sur les études financières quantitatives.
 
 \vspace{0.8cm}
 
-Ce projet de statistique appliquée a pour but de se poser des questions sur les différences entre l'hôpital privé et l'hôpital publique. Ainsi nous allons étudier les causes et les conséquences de ces différences. Nous allons tout d'abord briévement étudier ces divergences qui seraient principalements dues à l'ambulatoire utilisé par l'hôpital privé pour voir les résultats financiers. Nous allons étudier si l'ambulatoire pratiqué par l'hôpital privé est due à de meilleurs investissement en capitaux ou bien s'il y a d'autres arguments qui font que le publique ne pratique pas autant l'ambulatoire. Cette étude pourrait donc permettre de lancer une nouvelle stratégie d'investissement dans l'hôpital publique pour lui permettre de développer une meilleure efficacité et de meilleurs résultats dans le cadre de la crise que fait face à l'hôpital (mise en évidence notamment par la crise du covid). Il va donc être nécessaire pour répondre à ces questions de différence de moyens et d'efficacité entre l'hôpital privé et publique d'utiliser nos compétences acquises en statistique et en économétrie.
+Ce projet de statistique appliquée a pour but d’examiner les différences entre
+l’hôpital privé et l’hôpital public. En effet, notre encadrant Mr Robert Gary-
+Bobo a récemment publié un papier concluant qu’il y a une réelle différence
+d’efficacité entre l’hôpital public et privé: pour un méme montant investi,
+l’hôpital privé soigne ”plus” de gens que l’hopital public. Certaines hypothèses
+ont alors été émises par Mr Robert Gary-Bobo pour expliquer cette différence
+d’efficacité, le but de notre projet est donc de vérifier ces hypothèses ou d’en
+émettre de nouvelles pour expliquer la sous productivité de l’hopital public par
+rapport au privé. Nous allons tout d’abord briévement étudier ces divergences qui seraient
+principalements dues à l’ambulatoire utilisé par l’hôpital privé pour voir les
+résultats financiers. Nous allons étudier si l’ambulatoire pratiqué par l’hôpital
+privé est due à de meilleurs investissement en capitaux ou bien s’il y a d’autres
+arguments qui font que le public ne pratique pas autant l’ambulatoire. Cette
+étude pourrait donc permettre de lancer une nouvelle stratégie d’investissement
+dans l’hôpital public pour lui permettre de développer une meilleure effi-
+cacité et de meilleurs résultats dans le cadre de la crise que fait face à l’hôpital
+(mise en évidence notamment par la crise du covid). Il va donc être nécessaire
+pour répondre à ces questions de différence de moyens et d’efficacité entre
+l’hôpital privé et public d’utiliser nos compétences acquises en statistique
+et en économétrie
 
 \vspace{0.8cm}
 
-Nous avons décidé de travailler lors de ce projet sur GitHub avec des travaux sur R d'une part ainsi que sur Python d'autre part afin d'utiliser au mieux les avantages des deux languages.
+Suite aux conseils donnés par notre encadrant, nous avons décidé de faire
+notre projet à l’aide du langage de programmation R avec l’environnement Rstu-
+dio car c’est un langage que nous avions déjà utilisé en 1ère année. Nous avons
+aussi crée un répertoire sur Github pour pouvoir partager son travail aux autres
+à l’aide de Git.
 
 \vspace{0.8cm}
 
-Nous avons donc commencé le projet en Novembre par prendre en mains les différentes bases de données vers lesquelles notre encadrant M. Gary-Bobo nous a dirigé. Nous avons débuté nos travaux sur les bases de données provenant de HospiDiag, outil d’aide à la décision permettant de mesurer la performance d’un établissement de santé qui pratique de la médecine, de la chirurgie ou de l’obstétrique, en comparaison avec d’autres établissements de santé. Ce site regroupe des données sur différentes variables physiques (nombres de lits, nombres d'opérations de tel ou tel type, l'ambulatoire, la durée d'un séjour) ainsi que des variables financières (EBITDA, taux d'endettements, le taux de capacité d'auto-financement, les aides de l'états, MIG, MERRI ect.) sur tous les différents établissements de santé en France, qui sont réparties en différentes catégories : Clinique (privée), Centre Hospitalier, Centre Hospitalier régional, centre de lutte contre le cancer et les établissements à buts non lucratifs (publique).
+Lors du début du projet, vers le mois de Novembre, nous avons commencé par
+explorer la base de données fournie par le site Hospidiag que nous a conseillé
+notre encadrant, la base de données étant publique. HospiDiag est un outil
+d’aide à la décision permettant de mesurer la performance d’un ´etablissement de santé.
+Il y a sur le site d’Hospidiag 6 tableaux excels regroupant les données 
+médicales de 1497 établissements de santé de 2017 jusqu’à 2022. La base de
+données contient les données physiques des établissements, comme le nombres
+de lits en médecine, le nombres d’opérations effectuées, le type d’établissement...
+Elle contient aussi des indicateurs comme le taux de chirugie ambulatoire ou le
+rapport entre le nombre de jours moyens passé à l’hopital et le nombre de
+jour théorique établit dans le case mix... Ainsi que des variables financières
+(EBITDA, taux d’endettements, le taux de capacité d’auto-financement, les
+aides de l’états, MIG, MERRI ect.) Les établissements de santé sont eux di-
+visés en 5 catégories: Clinique (privée), Centre Hospitalier, Centre Hospitalier
+régional, centre de lutte contre le cancer et les établissements à buts non lucratifs
+. Nous avons décidé de travailler sur les données de 2017 à 2022 en enl-
+evant les données de 2020 (année covid), étant donné que les données sont trop
+différentes. Pour ce qui est des années 2021 et 2022 nous les avons gardées mais
+il y a beaucoup de données manquantes, sûrement parce que certains hôpitaux
+n’ont pas encore remontée les données.
 
 \vspace{0.8cm}
 
-Nous avons décidé de travailler sur les données de 2017 à 2022 en enlevant les données de 2020 (année covid), étant donné que les données sont trop différentes. Pour ce qui est des années 2021 et 2022 nous les avons gardées mais il y a beaucoup de données manquantes, sûrement parce que certains hôpitaux n'ont pas encore remontée les données.
-
-\vspace{0.8cm}
-
-
-Pour la question du choix des variables, notre étude va se consacré sur l'étude des variables financières, on regarde celle intéréssantes au sens qu'elles aient assez de données, qu'elles soient petinentes à notre étudie privée/publique en terme d'efficacité. 
-On remarque que certaines variables financières ne peuvent pas être calculées pour les établissements privés à but lucratif. Il s’agit par exemple de:
-P4 Coût du personnel non médical des services cliniques rapporté aux recettes 
-P5 Coût du personnel médical des services cliniques rapporté aux recettes 
-P6 Coût du personnel relatif aux services médico-techniques rapporté aux recettes 
-
-Au final on s'intéressera à 49 variables, pour le moment notre étude va se focaliser sur la marge brut, l'EBIDTA, le taux d'exploitation, les recettes d'exploitations, les encours de la dette, les aides aux hôpitaux types MERRI, MIG, les besoins en fonds de roulements.
+Pour la question du choix des variables, notre étude va se consacré sur l’étude
+des variables financières, on regarde celle intéréssantes au sens qu’elles aient
+assez de données, qu’elles soient pertinentes à notre étudie privée/public en
+terme d’efficacité. On remarque que certaines variables financières ne peuvent
+pas être calculées pour les établissements privés à but lucratif. Il s’agit par
+exemple de: P4 Coût du personnel non médical des services cliniques rapporté
+aux recettes P5 Coût du personnel médical des services cliniques rapporté aux
+recettes P6 Coût du personnel relatif aux services médico-techniques rapporté
+aux recettes.
+Au final, nous avons retenu 49 variables financières que nous avons envoyé à
+notre encadrant. Les plus importantes et donc celles par lesquelles nous avons
+commencé sont: La marge brut, l’EBIDTA, le taux d’exploitation, les recettes
+d’exploitations, les encours de la dette, les aides aux hôpitaux types MERRI,
+MIG, les besoins en fonds de roulements.
 
 \vspace{0.8cm}
 
@@ -148,12 +197,13 @@ Quant au taux EBITDA (bénéfice avant intérêts, impôts, dépréciation et am
 
 ou encore EBITDA = Chiffre d’affaires annuel hors taxes — Achats et charges externes — Charges de personnel — Autres charges
 
-Un taux faible ou négatif rend donc compte de l'incapacité de l'établissement à couvrir ses investissements futurs et leur financement par le cycle d'exploitation.
-
-  Ces indicateurs bien que similaire diffèrent de par la manière dont elles se calculent
-on les étudie donc séparemment. Ce choix des etablissements a été effectué en 
-omettant ceux pour lesquels la valeur de la variable est NA et ceux ayant des valeurs abérrantes (notons que ces valeurs abérrantes ont été exclues
-en utilisant les seuils (-100 et 100). De cette étude on  retient:
+Un taux faible ou négatif rend donc compte de l’incapacité de l’établissement
+à couvrir ses investissements futurs et leur financement par le cycle d’exploitation.
+Ces indicateurs bien que similaire diffèrent de par la manière dont elles se
+calculent on les étudie donc séparemment. Ce choix des etablissements a été
+effectué en omettant ceux pour lesquels la valeur de la variable est NA et ceux
+ayant des valeurs abérrantes (notons que ces valeurs abérrantes ont été exclues
+en utilisant les seuils (-100 et 100).  De cette étude on  retient:
 
   Variable F1D (taux de marge brute pour les etablissements publique): On recense pour
 cette variable 252 observations. L'analyse approfondie des données financières révèle 
@@ -166,8 +216,7 @@ certaine dispersion, avec des valeurs s'étendant de -11 à 15. Une
 investigation plus approfondie met en lumière une légère asymétrie négative 
 dans la distribution, suggérant une distribution décalée à droite de la médiane. 
 Cependant, la majorité des observations se situent dans une fourchette relativement 
-étroite, ce qui témoigne d'une cohérence dans les performances opérationnelles des entreprises incluses 
-dans l'échantillon. 
+étroite, ce qui témoigne d'une cohérence dans les performances opérationnelles des entreprises incluses dans l'échantillon. 
 
 Variable F1O (taux EBITDA): 
   On recense ici 59 établissements privés. L'exploration des données financières du 
@@ -195,3 +244,4 @@ Une autre difficulté sera le nombre de non-réponse des établissements, en par
 Le but est de mettre en relation les résultats financiers des établissements et les performances des hôpitaux et de comparer les hôpitaux publics et privés.
 Une autre source de données qui peut être intéressante est la base sur le site SAE Diffusion des statistiques annuelles des établissements de santé, même si après une première recherche il n’apparait pas de variable financière, d’autres variables pourraient être utilisées lors des prochaines étapes. De plus cette base sera facilement mise en relation avec la base hospidiag en utilisant le numéro FINESS de chaque établissement comme clef primaire.\textbf{}
 \end{document}
+
