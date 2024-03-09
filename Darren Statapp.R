@@ -102,6 +102,8 @@ entreprises incluses dans l'échantillon. En outre, la présence de quelques
 valeurs aberrantes, notamment une valeur maximale de 100, soulève des questions 
 quant à leur impact potentiel sur l'analyse globale des données. 
 
+Utilisation de git
+
 
 
 
