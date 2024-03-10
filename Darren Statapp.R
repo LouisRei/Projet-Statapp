@@ -62,9 +62,11 @@ data_Fi <- mutate(data_Fi, CAF  = coalesce(F2_D, F2_O)
 #En effet le taux de marge brute correspond à la  "marge" que l'établissement 
 #dégage sur son exploitation « courante » pour financer ses charges 
 #financières et les conséquences financières de ses investissements.
-#Quant au taux EBITDA (bénéfice avant intérêts, impôts, dépréciation et amortissement) il mesure la "marge" que l'établissement privé dégage sur son exploitation "courante" pour financer ses charges financières, d'amortissement
-#et de provisions, c'est-à-dire pour financer ses investissements. Elle se calcule donc comme suit:
-#(EBITDA / CA) x 100 où EBITDA= Résultat net comptable + Charges financières + Impôts et taxes + Dotations aux amortissements et provisions
+#Quant au taux EBITDA (bénéfice avant intérêts, impôts, dépréciation et amortissement) il 
+#mesure la "marge" que l'établissement privé dégage sur son exploitation "courante" pour 
+#financer ses charges financières, d'amortissement et de provisions, c'est-à-dire pour 
+#financer ses investissements. Elle se calcule donc comme suit: (EBITDA / CA) x 100 où 
+#EBITDA= Résultat net comptable + Charges financières + Impôts et taxes + Dotations aux amortissements et provisions
 #ou encore EBITDA = Chiffre d’affaires annuel hors taxes — Achats et charges externes — Charges de personnel — Autres charges
 #Un taux faible ou négatif rend donc compte de l'incapacité de l'établissement à couvrir ses investissements
 #futurs et leur financement par le cycle d'exploitation.
@@ -209,6 +211,11 @@ data2 <- arrange(data2, desc(marge_bruteD))
 boxplot(data1$EBITDAO)
 
 boxplot(data2$marge_bruteD)
+boxplot(data1$EBITDAO, data2$marge_bruteD, 
+        names = c("EBITDA", "marge_brute"),
+        xlab = "Variables",
+        ylab = "Valeur",
+        main = "Boxplot pour EBITDA et marge_brute")
 
 
 # Nuage de points (si une autre variable est présente)
@@ -249,18 +256,27 @@ summary(dataD)
 summary(dataO)
 
 # Histogrammes
-hist(data1$EBITDAO)
+hist(dataD$TT_subventionD)
 
-hist(data2$marge_bruteD)
+hist(dataO$TT_subventionO)
 
 
-data1 <- arrange(data1, desc(EBITDAO))
-data2 <- arrange(data2, desc(marge_bruteD))
+dataD <- arrange(dataD, desc(TT_subventionD))
+dataO <- arrange(dataO, desc(TT_subventionO))
 
 # Boîte à moustaches
-boxplot(data1$EBITDAO)
 
-boxplot(data2$marge_bruteD)
+boxplot(dataD$TT_subventionD, 
+        names = c("Subvention public"),
+        xlab = "Variables",
+        ylab = "Valeur",
+        main = "Boxplot pour Subvention public")
+
+boxplot(dataO$TT_subventionO, 
+        names = c("Subvention privé"),
+        xlab = "Variables",
+        ylab = "Valeur",
+        main = "Boxplot pour Subvention privé")
 
 
 # Nuage de points (si une autre variable est présente)
