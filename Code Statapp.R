@@ -20,7 +20,7 @@ panel_data <- bind_rows(df_2017,df_2018,df_2019)
 
 panel_data <- panel_data[,c("finess", "rs","F1_D", "F1_D_bis", "F2_D", "F3_D", "F4_D", "F5_D", 
                             "F6_D", "F8_D", "F9_D", "F1_O", "F1_O_bis", "F2_O","F3_O", "F4_O",
-                            "F5_O", "F6_O", "F8_O", "F9_O","année", "CI_AC1","A9","A12","P8","P9","P12","RH3","RH4","P1","P14")]
+                            "F5_O", "F6_O", "F8_O", "F9_O","année", "CI_AC1","A9","A12","P8","P9","P12","RH3","RH4","P1","P14","cat")]
 
 
 panel_data <- panel_data %>%
@@ -71,6 +71,25 @@ library(plm)
 
 pdata <- pdata.frame(panel_data_cleaned, index = c("finess", "année"))
 
+# on definit la variable log_dms
+
+pdata$DMS <- as.numeric(gsub(",",".", pdata$DMS))
+pdata$sureffectif_cadre <- as.numeric(gsub(",",".", pdata$sureffectif_cadre))
+pdata$CAF <- as.numeric(gsub(",",".", pdata$CAF))
+pdata$sejour_grave <- as.numeric(gsub(",",".", pdata$sejour_grave))
+pdata$chirurgie_ambu <- as.numeric(gsub(",",".", pdata$chirurgie_ambu))
+
+
+# définir indicatrice de privé en interaction avec le publique, la regarder évoluer, effet taille de l'établissement (log de séjour +1), indicatrice d'ambulatoire nulle, lien entre variable genre ln(sejour ambu)*indic(privée)
+# log(séjourambu/sejour hospi complete) voir SAE 
+
+pdata <- mutate(pdata, log_dms = log(DMS+1),
+                log_cadre = log(sureffectif_cadre),
+                log_sejour_grave = log(sejour_grave),
+                log_chirurgie_ambu = log(chirurgie_ambu + 1)
+                )
+
+
 pdata_lit_cadre <- pdata[,c("CAF", "nb_lit","DMS","sureffectif_cadre")]
 pdata_lit_cadre <- pdata_lit_cadre %>%
   filter(!if_any(c(nb_lit, DMS, sureffectif_cadre), is.na))
@@ -86,21 +105,73 @@ modele_test_CAF <- lm(CAF ~   nb_lit + DMS + sureffectif_cadre, pdata_lit_cadre)
 
 summary(modele_test_CAF)
 
+# Régression du taux de CAF sur le log_durée moyenne de séjour + taux de non cadre soignant / cadre soignant (infirmier/aide soignant)
+
+pdata_lit_cadre1 <- pdata[,c("CAF","log_dms","log_cadre")]
+pdata_lit_cadre1 <- pdata_lit_cadre1 %>%
+  filter(!if_any(c(log_dms, log_cadre), is.na))
+pdata_lit_cadre1 <- pdata_lit_cadre1 %>%
+  filter(!if_any(c(log_dms, log_cadre), is.infinite))
+
+# pdata_lit_cadre$nb_lit <- as.numeric(gsub(",",".", pdata_lit_cadre$nb_lit))
+pdata_lit_cadre1$CAF <- as.numeric(gsub(",",".", pdata_lit_cadre1$CAF))
+pdata_lit_cadre1$log_dms <- as.numeric(gsub(",",".", pdata_lit_cadre1$log_dms))
+pdata_lit_cadre1$log_cadre <- as.numeric(gsub(",",".", pdata_lit_cadre1$log_cadre))
+
+modele_test_CAF1 <- lm(CAF ~ log_dms + log_cadre, pdata_lit_cadre1)
+
+summary(modele_test_CAF1) 
+
 par(mfrow = c(2, 2))  # Organiser les graphiques en une grille de 2x2
-plot(modele_test_CAF)  # Crée des graphiques de diagnostic pour le modèle
+plot(modele_test_CAF1)  # Crée des graphiques de diagnostic pour le modèle
 
 
 library(ggplot2)
 
 # Graphique de la variable CAF par rapport à un prédicteur : durée moyenne de séjour
-ggplot(pdata_lit_cadre, aes(x = pdata_lit_cadre$DMS, y = pdata_lit_cadre$CAF)) +
+ggplot(pdata_lit_cadre1, aes(x = pdata_lit_cadre1$log_dms, y = pdata_lit_cadre1$log_cadre)) +
   geom_point() +
   labs(title = "Effet de DMS sur la CAF", x = "DMS", y = "CAF")
 
 # Graphique de la variable CAF par rapport à un prédicteur : nombre de lit
-ggplot(pdata_lit_cadre, aes(x = pdata_lit_cadre$nb_lit, y = pdata_lit_cadre$CAF)) +
-  geom_point() +
-  labs(title = "Effet du nombre de lit sur la CAF", x = "nombre de lit", y = "CAF")
+#ggplot(pdata_lit_cadre, aes(x = pdata_lit_cadre$nb_lit, y = pdata_lit_cadre$CAF)) +
+#  geom_point() +
+#  labs(title = "Effet du nombre de lit sur la CAF", x = "nombre de lit", y = "CAF")
+
+# On va maintenant rajouter le gravité des séjours, A9, et la part de chirurgie ambu
+
+
+data_reg_1 <- pdata[, c("CAF","log_dms","log_cadre","log_sejour_grave","log_chirurgie_ambu")]
+
+data_reg_1 <- data_reg_1 %>% filter(!if_any(c(log_dms, log_cadre, log_sejour_grave, log_chirurgie_ambu), is.na))
+
+data_reg_1 <- data_reg_1 %>% filter(!if_any(c(log_dms, log_cadre, log_sejour_grave, log_chirurgie_ambu), is.infinite))
+
+lm_caf_1 <- lm(CAF ~ log_dms + log_cadre + log_sejour_grave + log_chirurgie_ambu,data_reg_1)
+
+summary(lm_caf_1) 
+
+# dans cette régression on a les effets durée de séjour et gravité du séjour qui sont peu significatif 11% et 7 %, puis l'effet proportion de cadre, et l'effet proportion d'ambulatoire.
+# on voit un effet négatif de l'ambulatoire sur le taux de CAF, peut-être que simplement le privée a un taux de caf plus faible ce qui fait que
+# l'ambulatoire est mal vu. Pour voir enlever l'effet privée/publique, et bien étudier l'ambu sur le taux de CAF il faut séparer privée publique.
+# On va utiliser une indicatrice de privée * chirurgie_ambu pour voir si côté publique l'effet est opposé.
+
+data_reg_2 <- pdata[, c("CAF","log_dms","log_cadre","log_sejour_grave","log_chirurgie_ambu", "cat")]
+
+# mettre cat dans pdata pour avoir les catégorie publique / privée
+
+data_reg_2 <- mutate(data_reg_2,
+                     indic_privee = ifelse(cat == "CHR" | cat == "CH", 0, 1),
+                     log_ambu_privee = log_chirurgie_ambu * indic_publique)
+
+data_reg_2 <- data_reg_2 %>% filter(!if_any(c(log_dms, log_cadre, log_sejour_grave, log_chirurgie_ambu, log_ambu_privee), is.na))
+
+data_reg_2 <- data_reg_2 %>% filter(!if_any(c(log_dms, log_cadre, log_sejour_grave, log_chirurgie_ambu, log_ambu_privee), is.infinite))
+
+lm_caf_2 <- lm(CAF ~ log_dms + log_cadre + log_sejour_grave + log_chirurgie_ambu + log_ambu_privee ,data_reg_2)
+
+summary(lm_caf_2)
+
 
 # Maintenant on va voir comment impacte la proportion de chirurgie ambulatoire sur le taux de CAF
 
